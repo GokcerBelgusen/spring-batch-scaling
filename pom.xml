@@ -21,6 +21,7 @@
 	<modules>
 		<module>single-thread</module>
 		<module>multi-threaded</module>
+		<module>async-process</module>
 	</modules>
 	<dependencyManagement>
 		<dependencies>
