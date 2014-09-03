@@ -22,6 +22,9 @@
 		<module>single-thread</module>
 		<module>multi-threaded</module>
 		<module>async-process</module>
+		<module>remote-chunking/remote-chunking-master</module>
+		<module>remote-chunking/remote-chunking-slave</module>
+		<module>remote-chunking/remote-chunking-domain</module>
 	</modules>
 	<dependencyManagement>
 		<dependencies>
