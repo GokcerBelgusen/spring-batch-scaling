@@ -28,8 +28,7 @@
 	<batch:job-repository/>
 
 	<bean id="cleanupTasklet" class="io.spring.remotechunkingmaster.tasklet.CleanupTasklet">
-		<constructor-arg
-				value="#{systemProperties['user.home']}#{systemProperties['file.separator']}image_submissions#{systemProperties['file.separator']}processed#{systemProperties['file.separator']}"/>
+		<constructor-arg value="${processed.images.dir}"/>
 	</bean>
 
 	<bean id="itemReader" class="org.springframework.batch.item.database.JdbcPagingItemReader">

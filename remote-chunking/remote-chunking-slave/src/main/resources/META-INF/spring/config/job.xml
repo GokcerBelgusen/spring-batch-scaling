@@ -12,15 +12,13 @@
 									 item-processor="itemProcessor" item-writer="itemWriter"/>
 
 	<bean id="itemProcessor" class="io.spring.remotechunkingslave.processor.ImageProcessor">
-		<constructor-arg index="0"
-						 value="#{systemProperties['user.home']}#{systemProperties['file.separator']}image_submissions#{systemProperties['file.separator']}unprocessed#{systemProperties['file.separator']}"/>
+		<constructor-arg index="0" value="${unprocessed.images.dir}"/>
 		<constructor-arg index="1" value="200"/>
 		<constructor-arg index="2" value="150"/>
 	</bean>
 
 	<bean id="itemWriter" class="io.spring.remotechunkingslave.writer.ImageWriter">
-		<constructor-arg index="0"
-						 value="#{systemProperties['user.home']}#{systemProperties['file.separator']}image_submissions#{systemProperties['file.separator']}processed#{systemProperties['file.separator']}"/>
+		<constructor-arg index="0" value="${processed.images.dir}"/>
 		<constructor-arg index="1" value="jpg"/>
 	</bean>
 </beans>

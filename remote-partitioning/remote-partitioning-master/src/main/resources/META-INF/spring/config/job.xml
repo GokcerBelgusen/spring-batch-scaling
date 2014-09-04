@@ -29,8 +29,7 @@
 	<batch:job-repository/>
 
 	<bean id="cleanupTasklet" class="io.spring.remotepartitioningmaster.tasklet.CleanupTasklet">
-		<constructor-arg
-				value="#{systemProperties['user.home']}#{systemProperties['file.separator']}image_submissions#{systemProperties['file.separator']}processed#{systemProperties['file.separator']}"/>
+		<constructor-arg value="${processed.images.dir}"/>
 	</bean>
 
 	<bean id="jobListener" class="io.spring.remotepartitioningmaster.listener.JobDurationListener"/>

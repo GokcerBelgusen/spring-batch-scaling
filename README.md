@@ -1,4 +1,6 @@
-Samples for scaling options in spring batch. At this time, these samples require 3.1.0.BUILD-SNAPSHOT or greater. 
+Basic and self contained samples for scaling options in spring batch. At this time, these samples build with 3.1.0.BUILD-SNAPSHOT to utilize the remote chunking namespace support that will be available in the upcoming 3.1.0 release version. 
+
+The theme to each sample is a user submits images that our job needs to resize. The path to the file is stored in the database, the image on disk residing in the "unprocessed" directory. The job will read the paths from the database and resize the image, writing it to the "processed" directory.
 
 To build all, from the top level directory:
 
@@ -11,8 +13,14 @@ Running samples:
   * mkdir -p $HOME/image_submissions/processed
 
   * mkdir $HOME/image_submissions/unprocessed
+  
+  * These locations can be changed in either the corresponding application.properties files or overridden by JVM parameters (-Dprop.name=val)
 
-  * Extract image data from FIND_HOME into $HOME/image_submissions/unprocessed
+  * Image data obtained from: http://137.189.35.203/WebUI/CatDatabase/catData.html
+  
+    * Download "part 2" from: http://137.189.35.203/WebUI/CatDatabase/Data/CAT_DATASET_02.zip 
+    
+    * Extract the archive and move *.jpg into $HOME/image_submissions/unprocessed
 
 Single thread sample
 
@@ -28,7 +36,7 @@ Async processing sample
 
 Remote chunking sample:
 
-* Start ActiveMQ locally (or modify the property file and set the proper broker URL) 
+* Start ActiveMQ locally (or modify the either applications.properties or override via JVM parameters (-Dprop.name=val))
 
 * In separate consoles:
 
@@ -36,11 +44,16 @@ Remote chunking sample:
 
   * java -jar remote-chunking/remote-chunking-master/target/remote-chunking-master-1.0.0.BUILD-SNAPSHOT.jar
 
-* See the remote-chunking/remote-chunking-slave/bin directory for some basic scripts on starting / stopping slaves
-
-* You will want to spread these processes over multiple nodes rather than running on a single machine and modify the configuration files appropriately.
+* NOTE: You will probably want to spread these processes over multiple nodes rather than running on a single machine. See application.properties and modifiy or override with JVM parameters (-Dprop.name=val) as appropriate.
 
 Remote partitioning sample:
 
-* Add me
+* Start HSQLDB server:
 
+  * java -cp /path/to/hsqldb-2.3.1.jar org.hsqldb.Server -database.0 file:mydb -dbname.0 partition
+  
+  * java -jar remote-partitioning/remote-partitioning-slave/target/remote-partitioning-slave-1.0.0.BUILD-SNAPSHOT.jar
+  
+  * java -jar remote-partitioning/remote-partitioning-master/target/remote-partitioning-master-1.0.0.BUILD-SNAPSHOT.jar 
+
+* NOTE: You will probably want to spread these processes over multiple nodes rather than running on a single machine. Also, you will probably want to use a regular RDBMS. See application.properties and modifiy or override with JVM parameters (-Dprop.name=val) as appropriate.

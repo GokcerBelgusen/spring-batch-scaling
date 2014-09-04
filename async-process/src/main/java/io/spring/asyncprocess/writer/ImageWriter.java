@@ -1,6 +1,8 @@
 package io.spring.asyncprocess.writer;
 
 import io.spring.asyncprocess.domain.ProcessedImage;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.batch.item.ItemWriter;
 
 import javax.imageio.ImageIO;
@@ -15,6 +17,8 @@ import java.util.List;
  * </p>
  */
 public class ImageWriter implements ItemWriter<ProcessedImage> {
+	private static final Log LOG = LogFactory.getLog(ImageWriter.class);
+
 	private final String path;
 	private final String formatName;
 
@@ -24,6 +28,8 @@ public class ImageWriter implements ItemWriter<ProcessedImage> {
 	}
 
 	public void write(final List<? extends ProcessedImage> processedImages) throws Exception {
+		LOG.info("Writing: " + processedImages.size() + " images");
+
 		for (ProcessedImage processedImage : processedImages) {
 			ImageIO.write(processedImage.getImage(), formatName, new File(path + processedImage.getFileName()));
 		}
