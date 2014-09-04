@@ -25,6 +25,8 @@
 		<module>remote-chunking/remote-chunking-master</module>
 		<module>remote-chunking/remote-chunking-slave</module>
 		<module>remote-chunking/remote-chunking-domain</module>
+		<module>remote-partitioning/remote-partitioning-master</module>
+		<module>remote-partitioning/remote-partitioning-slave</module>
 	</modules>
 	<dependencyManagement>
 		<dependencies>
