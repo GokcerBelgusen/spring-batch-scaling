@@ -9,6 +9,7 @@
 		<artifactId>spring-batch-scaling</artifactId>
 		<groupId>io.spring</groupId>
 		<version>1.0.0.BUILD-SNAPSHOT</version>
+		<relativePath>../../</relativePath>
 	</parent>
 	<packaging>jar</packaging>
 </project>
