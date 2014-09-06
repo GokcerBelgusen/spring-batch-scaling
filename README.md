@@ -57,3 +57,21 @@ Remote partitioning sample:
   * java -jar remote-partitioning/remote-partitioning-master/target/remote-partitioning-master-1.0.0.BUILD-SNAPSHOT.jar 
 
 * NOTE: You will probably want to spread these processes over multiple nodes rather than running on a single machine. Also, you will probably want to use a regular RDBMS. See application.properties and modifiy or override with JVM parameters (-Dprop.name=val) as appropriate.
+
+Launching batch jobs through messages / Get feedback with informational messages sample:
+
+* Start ActiveMQ locally (or modify the either applications.properties or override via JVM parameters (-Dprop.name=val)). ActiveMQ is used to send the information message about the duration of the job via a JMS message.
+
+* Setup data locations:
+
+  * mkdir -p $HOME/image_submissions/bulk
+
+    * This directory will be scanned by Spring Integration for zip files to use when launching a job
+
+  * Zip the contents of the images in $HOME/image_submissions/unprocessed that were extracted in the "Setup data locations" section of "Running samples"
+
+    * The filename can be anything as long as it ends in .zip
+
+  * java -jar message-job-launch/target/message-job-launch-1.0.0.BUILD-SNAPSHOT.jar
+
+    * This will start the application, Spring Integration will pickup the zip file and invoke the batch job with the file name. The batch job will then uncompress the archive into the "unprocessed" directory as with other samples. Upon completion, rather than logging the time it took for the job to complete, a message will be put onto the "notifications" queue in ActiveMQ.

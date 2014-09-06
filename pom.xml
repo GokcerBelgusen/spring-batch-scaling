@@ -11,7 +11,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.batch.version>3.1.0.BUILD-20140905.030215-1</spring.batch.version>
-		<spring.version>4.0.2.RELEASE</spring.version>
+		<spring.version>4.0.5.RELEASE</spring.version>
 		<log4j.version>1.2.17</log4j.version>
 		<hsqldb.version>2.3.2</hsqldb.version>
 		<commons.dbcp.version>1.4</commons.dbcp.version>
@@ -27,6 +27,7 @@
 		<module>remote-chunking/remote-chunking-domain</module>
 		<module>remote-partitioning/remote-partitioning-master</module>
 		<module>remote-partitioning/remote-partitioning-slave</module>
+		<module>message-job-launch</module>
 	</modules>
 	<dependencyManagement>
 		<dependencies>
