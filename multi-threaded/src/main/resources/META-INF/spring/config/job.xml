@@ -17,7 +17,7 @@
 		</batch:step>
 		<batch:step id="processImages">
 			<batch:tasklet task-executor="taskExecutor">
-				<batch:chunk reader="itemReader" processor="itemProcessor" writer="itemWriter" commit-interval="100"/>
+				<batch:chunk reader="itemReader" processor="itemProcessor" writer="itemWriter" commit-interval="500"/>
 			</batch:tasklet>
 		</batch:step>
 	</batch:job>
@@ -28,7 +28,9 @@
 		<constructor-arg value="${processed.images.dir}"/>
 	</bean>
 
-	<bean id="taskExecutor" class="org.springframework.core.task.SimpleAsyncTaskExecutor"/>
+	<bean id="taskExecutor" class="org.springframework.core.task.SimpleAsyncTaskExecutor">
+		<property name="concurrencyLimit" value="8"/>
+	</bean>
 
 	<bean id="itemReader" class="org.springframework.batch.item.database.JdbcPagingItemReader">
 		<property name="dataSource" ref="dataSource"/>
@@ -40,7 +42,7 @@
 				<property name="sortKey" value="id"/>
 			</bean>
 		</property>
-		<property name="pageSize" value="100"/>
+		<property name="pageSize" value="500"/>
 		<property name="rowMapper">
 			<bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
 				<constructor-arg value="io.spring.multithreaded.domain.ImageSubmission"/>

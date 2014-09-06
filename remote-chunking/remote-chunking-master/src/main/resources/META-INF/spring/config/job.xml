@@ -20,7 +20,7 @@
 		</batch:step>
 		<batch:step id="processImages">
 			<batch:tasklet>
-				<batch:chunk reader="itemReader" writer="itemWriter" commit-interval="100"/>
+				<batch:chunk reader="itemReader" writer="itemWriter" commit-interval="500"/>
 			</batch:tasklet>
 		</batch:step>
 	</batch:job>
@@ -41,7 +41,7 @@
 				<property name="sortKey" value="id"/>
 			</bean>
 		</property>
-		<property name="pageSize" value="100"/>
+		<property name="pageSize" value="500"/>
 		<property name="rowMapper">
 			<bean class="org.springframework.jdbc.core.BeanPropertyRowMapper">
 				<constructor-arg value="io.spring.remotechunkingdomain.domain.ImageSubmission"/>
