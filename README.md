@@ -24,15 +24,15 @@ Running samples:
 
 Single thread sample
 
-* java -jar single-thread/target/single-thread-1.0.0.BUILD-SNAPSHOT.jar
+* java -Djava.awt.headless=true -jar single-thread/target/single-thread-1.0.0.BUILD-SNAPSHOT.jar
 
 Multi threaded sample
 
-* java -jar multi-threaded/target/multi-threaded-1.0.0.BUILD-SNAPSHOT.jar
+* java -Djava.awt.headless=true -jar multi-threaded/target/multi-threaded-1.0.0.BUILD-SNAPSHOT.jar
 
 Async processing sample
 
-* java -jar async-process/target/async-process-1.0.0.BUILD-SNAPSHOT.jar
+* java -Djava.awt.headless=true -jar async-process/target/async-process-1.0.0.BUILD-SNAPSHOT.jar
 
 Remote chunking sample:
 
@@ -40,7 +40,7 @@ Remote chunking sample:
 
 * In separate consoles:
 
-  * java -jar remote-chunking/remote-chunking-slave/target/remote-chunking-slave-1.0.0.BUILD-SNAPSHOT.jar
+  * java -Djava.awt.headless=true -jar remote-chunking/remote-chunking-slave/target/remote-chunking-slave-1.0.0.BUILD-SNAPSHOT.jar
 
   * java -jar remote-chunking/remote-chunking-master/target/remote-chunking-master-1.0.0.BUILD-SNAPSHOT.jar
 
@@ -52,7 +52,7 @@ Remote partitioning sample:
 
   * java -cp /path/to/hsqldb-2.3.1.jar org.hsqldb.Server -database.0 file:mydb -dbname.0 partition
   
-  * java -jar remote-partitioning/remote-partitioning-slave/target/remote-partitioning-slave-1.0.0.BUILD-SNAPSHOT.jar
+  * java -Djava.awt.headless=true -jar remote-partitioning/remote-partitioning-slave/target/remote-partitioning-slave-1.0.0.BUILD-SNAPSHOT.jar
   
   * java -jar remote-partitioning/remote-partitioning-master/target/remote-partitioning-master-1.0.0.BUILD-SNAPSHOT.jar 
 
@@ -72,6 +72,6 @@ Launching batch jobs through messages / Get feedback with informational messages
 
     * The filename can be anything as long as it ends in .zip
 
-  * java -jar message-job-launch/target/message-job-launch-1.0.0.BUILD-SNAPSHOT.jar
+  * java -Djava.awt.headless=true -jar message-job-launch/target/message-job-launch-1.0.0.BUILD-SNAPSHOT.jar
 
     * This will start the application, Spring Integration will pickup the zip file and invoke the batch job with the file name. The batch job will then uncompress the archive into the "unprocessed" directory as with other samples. Upon completion, rather than logging the time it took for the job to complete, a message will be put onto the "notifications" queue in ActiveMQ.
