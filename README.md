@@ -69,6 +69,7 @@ Launching batch jobs through messages / Get feedback with informational messages
     * This directory will be scanned by Spring Integration for zip files to use when launching a job
 
   * Zip the contents of the images in $HOME/image_submissions/unprocessed that were extracted in the "Setup data locations" section of "Running samples"
+    * NOTE: in this sample, you can also zip up any images of your choice rather than using ones from the "unprocessed" directory. Just use the .jpg extension and .zip format. Rather than demonstrating a job processing predefined "user submitted" images, its a bit more generic and will process any zip file containing .jpg images. 
 
     * The filename can be anything as long as it ends in .zip
 

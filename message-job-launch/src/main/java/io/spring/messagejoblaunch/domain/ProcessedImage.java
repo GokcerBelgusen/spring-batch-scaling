@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 
 /**
  * <p>
- * Domain class representing a user submitted image that has been processed.
+ * Domain class representing a processed image.
  * </p>
  */
 public class ProcessedImage {
